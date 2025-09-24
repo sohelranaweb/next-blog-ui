@@ -1,10 +1,15 @@
 "use client";
+import { create } from "@/actions/create";
+import Form from "next/form";
 import { useState } from "react";
 
 function CreateBlogForm() {
   const [isFeatured, setIsFeatured] = useState("false");
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full">
+    <Form
+      action={create}
+      className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4 w-full"
+    >
       <h1 className="text-xl font-semibold mb-4">Create Blog</h1>
       {/* Title  */}
       <div>
@@ -84,7 +89,13 @@ function CreateBlogForm() {
           </label>
         </div>
       </div>
-    </div>
+      <button
+        type="submit"
+        className="w-full bg-blue-600 text-white font-medium py-2 rounded-md hover:bg-blue-700 transition"
+      >
+        Submit
+      </button>
+    </Form>
   );
 }
 
