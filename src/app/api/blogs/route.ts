@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 export const blogs = [
   {
     id: 19,
@@ -187,3 +189,19 @@ export const blogs = [
 export async function GET() {
   return Response.json(blogs);
 }
+
+export const POST = async (req: Request) => {
+  const blog = await req.json();
+  const newBlog = {
+    ...blog,
+    id: blogs.length + 1,
+  };
+  blogs.push(newBlog);
+
+  return new NextResponse(JSON.stringify(newBlog), {
+    status: 201,
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+};
