@@ -19,3 +19,10 @@ export interface Post {
   authorId: number;
   author: Author;
 }
+
+export type RegisterFormValues = {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+};
